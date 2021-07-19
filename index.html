@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // - створити функцію, яка генерує масив рандомних числових цілих значень в діапазоні від 0 до 100.
+    function randNumberArray(lengthArray) {
+        let arr = [];
+        for (let i = 0; i < lengthArray; i++) {
+            arr.push(Math.round(Math.random() * 100));
+        }
+        return arr;
+    }
+
+    let arr1 = randNumberArray(10);
+    console.log(arr1);
+
+    // - Змінти попередню функцію, щоб діапазон можна було визначити через аргументи.
+    function randNumberArrayByRange(lengthArray, range1, range2) {
+        let arr = [];
+        for (let i = 0; i < lengthArray; i++) {
+            arr.push(Math.round(Math.random() * (range2 - range1 + 1)) + range1);
+        }
+        return arr;
+    }
+
+    let arr2 = randNumberArrayByRange(12, 10, 20);
+    console.log(arr2);
+
+    // - створити (або згенерувати, за допомоги попередньої функції) масив рандомних цілих числових значень. Відсортувати його за допомоги sort
+    let sort = arr1.sort(function (current, next) {
+        return current - next;
+    });
+    console.log(sort);
+
+    // - створити (або згенерувати, за допомоги попередньої функції) масив рандомних цілих числових значень. відфільтрувати  його за допомоги filter, за лишивши тільки парні числа
+    let array = randNumberArray(12);
+    let filter = array.filter(function (value) {
+        return value % 2 === 0;
+    });
+    console.log(filter);
+
+    // - створити масив рандомних цілих числових значень (або згенерувати, за допомоги попередньої функції) . за допомоги map та колбеку перетворити всі об'єкти в масиві на срінгові.
+    let map = array.map(function (item) {
+        return item + '';
+    });
+    console.log(map);
+
+    // - Створити функцію конструктор для об'єктів User з полями id, name, surname , email, phone
+    function User(id, name, surname, email, phone) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.phone = phone;
+    }
+
+    // створити пустий масив, наповнити його 10 об'єктами new User(....)
+    let users = [];
+    users = [
+        new User(10, 'Vasya', 'Ivanov', 'vasy@gmail', '0972335568'),
+        new User(44, 'Petya', 'Zvoncev', 'petya@gmail', '0967888568'),
+        new User(3, 'Luda', 'Vasilishina', 'luda@gmail', '0978765568'),
+        new User(5, 'Natalia', 'Halak', 'nata@gmail', '0972335943'),
+        new User(101, 'Semen', 'Vasilenko', 'sema@gmail', '0975551187'),
+        new User(6, 'Vova', 'Demidov', 'vova@gmail', '0971115568'),
+        new User(7, 'Vlad', 'Pelih', 'vlad@gmail', '0972336698'),
+        new User(114, 'Oleg', 'Tymoshuk', 'oleg@gmail', '0975551187'),
+        new User(9, 'Olga', 'Rjabovol', 'olga@gmail', '0971115568'),
+        new User(17, 'Dasha', 'Afonina', 'dasha@gmail', '0972336698'),
+    ];
+
+    // Взяти масив цей  User[] та: Відфільтрувати , залишивши тільки об'єкти з парними id (filter) та Відсортувати його по id. по зростанню (sort)
+    let filter2 = users.filter(function (user) {
+        return user.id % 2 === 0;
+    });
+    console.log(filter2);
+
+    let sort2 = users.sort(function (user1, user2) {
+        return user1.id - user2.id;
+    });
+    console.log(sort2);
+
+</script>
+</body>
+</html>
